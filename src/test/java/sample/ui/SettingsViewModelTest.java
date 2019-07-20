@@ -19,9 +19,9 @@ public class SettingsViewModelTest {
     @Before
     public void setUp() throws Exception {
         settingsServiceMock = mock(SettingsService.class);
-        when(settingsServiceMock.load()).thenReturn(new Settings().setServerAddress("new value"));
+        when(settingsServiceMock.load()).thenReturn(Settings.builder().serverAddress("new value").build());
 
-        Settings settings = new Settings();
+        Settings settings = Settings.builder().build();
 
         viewModel = new SettingsViewModel(settings, settingsServiceMock);
     }

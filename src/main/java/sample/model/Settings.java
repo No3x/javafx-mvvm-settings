@@ -1,23 +1,21 @@
 package sample.model;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NonNull;
+
 import java.io.Serializable;
 
+@Data
+@Builder
 public class Settings implements Serializable {
 
     private static final long serialVersionUID = 4470694738124772838L;
 
-    private String serverAddress = "";
-
-    public Settings setServerAddress(final String serverAddress) {
-        this.serverAddress = serverAddress;
-        return this;
-    }
-
-    public String getServerAddress() {
-        return serverAddress;
-    }
+    @Builder.Default
+    private @NonNull String serverAddress = "";
 
     public static Settings defaultSettings() {
-        return new Settings().setServerAddress("localhost");
+        return Settings.builder().serverAddress("localhost").build();
     }
 }
